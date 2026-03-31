@@ -198,7 +198,7 @@ elif st.session_state.page == 'debrief':
     
     We are comparing the accuracy between these two groups to see if visual UI warnings effectively improve human trust in AI systems. 
     
-    If you have any questions about this research or would like a summary of the final results, please contact the Student Investigator at **[Insert Your Laurier Email]**.
+    If you have any questions about this research or would like a summary of the final results, please contact the Student Investigator at **pira8349@mylaurier.ca**.
     
     **You may now close this tab.**
     """)
