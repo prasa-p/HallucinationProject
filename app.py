@@ -9,7 +9,7 @@ st.set_page_config(page_title="AI Fact-Checker Experiment", layout="centered")
 
 # --- SESSION STATE INITIALIZATION ---
 if 'page' not in st.session_state:
-    st.session_state.page = 'intro' # Options: intro, game, post_survey, debrief
+    st.session_state.page = 'intro' # Options: intro, game, post_survey, debrief, screened_out
 if 'group' not in st.session_state:
     # Randomly assign user to Group A (Control) or Group B (Experimental)
     st.session_state.group = random.choice(['A', 'B'])
@@ -47,7 +47,7 @@ if st.session_state.page == 'intro':
     st.subheader("Part 1: About You")
     area_study = st.selectbox("Current Area of Study/Expertise", 
                               ["Computer Science/Engineering", "Natural Sciences", "Humanities/Arts", "Business", "Other"])
-    age_group = st.selectbox("Age Group", ["18-24", "25-34", "35-44", "45+"])
+    age_group = st.selectbox("Age Group", ["Under 18", "18-24", "25-34", "35-44", "45+"])    
     
     # Section 2: AI Familiarity
     ai_freq = st.radio("How often do you use AI tools (ChatGPT, Gemini, etc.)?", 
@@ -63,18 +63,25 @@ if st.session_state.page == 'intro':
     # Section 4: Baseline Trust
     trust_level = st.slider("Generally, how accurate do you believe AI models are?", 1, 5)
 
+    # Final Submit Button for Page 1
     if st.button("Start Experiment"):
-        # Save Pre-Survey Data
-        st.session_state.user_data = {
-            "group": st.session_state.group,
-            "study_area": area_study,
-            "age": age_group,
-            "frequency": ai_freq,
-            "mental_model": ai_model,
-            "baseline_trust": trust_level
-        }
-        st.session_state.page = 'game'
-        st.rerun()
+        if age_group == "Under 18":
+            # Screen out minors
+            st.session_state.page = 'screened_out'
+            st.rerun()
+        else:
+            # Save Pre-Survey Data for eligible participants
+            st.session_state.user_data = {
+                "group": st.session_state.group,
+                "study_area": area_study,
+                "age": age_group,
+                "frequency": ai_freq,
+                "mental_model": ai_model,
+                "baseline_trust": trust_level
+            }
+            # Send them to the game
+            st.session_state.page = 'game'
+            st.rerun()
 
 # --- PAGE 2: THE GAME (20 QUESTIONS) ---
 elif st.session_state.page == 'game':
@@ -213,3 +220,10 @@ elif st.session_state.page == 'debrief':
 
     **You may now close this tab.**
     """)
+
+# --- PAGE 5: SCREENED OUT ---
+elif st.session_state.page == 'screened_out':
+    st.title("Ineligible to Participate")
+    st.warning("We are sorry, but you must be 18 years of age or older to participate in this research study.")
+    st.write("Thank you for your time and interest!")
+    st.markdown("**You may now close this tab.**")
