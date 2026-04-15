@@ -189,16 +189,27 @@ elif st.session_state.page == 'debrief':
     st.success("Your data has been saved anonymously.")
     
     st.markdown("""
-    ### Study Debrief
-    The true purpose of this study was to measure **"Trust Calibration"**—how well users can identify AI hallucinations. 
-    
-    To test this, participants were randomly placed into one of two groups:
+    ### Study Debrief: The True Purpose of the Research
+
+    Thank you for your participation! During the consent process, you were informed that this study asked you to act as an "AI Fact-Checker." While this is true, we did not fully disclose the specific interface variations we were testing. We want to take a moment to explain exactly what we are researching and why this temporary concealment was necessary.
+
+    #### What was the concealment?
+    The true purpose of this study is to measure **"Trust Calibration"**—how well users can identify AI hallucinations based on interface cues. To test this, participants were randomly placed into one of two groups without their knowledge:
     * **Group A (Control):** Saw only the AI's text answers.
-    * **Group B (Experimental):** Saw the AI's answers alongside visual "Warning Labels" indicating the likelihood of a hallucination (calculated behind the scenes using the AI's mathematical uncertainty and consistency).
-    
-    We are comparing the accuracy between these two groups to see if visual UI warnings effectively improve human trust in AI systems. 
-    
-    If you have any questions about this research or would like a summary of the final results, please contact the Student Investigator at **pira8349@mylaurier.ca**.
-    
+    * **Group B (Experimental):** Saw the AI's answers alongside visual "Warning Labels" indicating the likelihood of a hallucination (calculated behind the scenes using the AI's mathematical uncertainty).
+
+    #### Why was this necessary for scientifically valid findings?
+    If we had told you in advance that we were testing the effectiveness of visual warning labels, it would have biased your natural behavior. You might have paid unnatural attention to the warnings or second-guessed your intuition, which is a psychological phenomenon known as *demand characteristics*. To get scientifically valid, real-world data on how people naturally react to AI safety interfaces, we needed your genuine, unbiased responses to the system.
+
+    #### Why is this research important?
+    As Large Language Models become more integrated into daily life, their tendency to "hallucinate" (confidently state false information) is a serious risk. Finding effective, human-centered UI designs—like the warning labels tested here—is critical for improving AI safety and helping users build appropriate trust in these tools. Altering the initial consent requirements was the only way to accurately measure if these UI interventions actually work.
+
+    #### Participant Care and Data Privacy
+    We understand that finding out a study involved concealment might feel surprising. Please know that this method is strictly used to evaluate the UI design and is never intended to deceive you maliciously or test your intelligence. **Your responses are entirely anonymous** and no identifying information has been linked to your performance. 
+
+    If you have any questions, concerns, or reactions regarding this concealment, or if you would like a summary of the final results, please contact the Student Investigator, Prasa Pirabagaran, at **pira8349@mylaurier.ca**. 
+
+    *This project has been reviewed and approved by the Wilfrid Laurier University Research Ethics Board (REB# 9577).*
+
     **You may now close this tab.**
     """)
