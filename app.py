@@ -117,7 +117,7 @@ elif st.session_state.page == 'game':
     st.markdown("---")
     
     # User Decision Inputs
-    decision = st.radio("What is your decision?", ["Publish (I believe this is true)", "Reject (I believe this is a hallucination)", "I don't know"], key=f"dec_{st.session_state.current_q_index}")
+    decision = st.radio("What is your decision?", ["True", "False (I believe this is a hallucination)", "I don't know"], key=f"dec_{st.session_state.current_q_index}")
     confidence = st.slider("How confident are you?", 0, 5, key=f"conf_{st.session_state.current_q_index}")
 
     if st.button("Next Question"):
